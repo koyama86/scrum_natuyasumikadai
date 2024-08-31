@@ -12,10 +12,14 @@ import java.util.*;
 public class TicketVendor {
 
     private List<Item> items;
+    private Cart cart;
 
     public TicketVendor(List<Item> items) {
 
         this.items = items;
+        this.cart = new Cart();
+
+
 
     }
 
@@ -30,5 +34,46 @@ public class TicketVendor {
         }
 
     }
+    public void addItemToCart(int itemId) {
 
+        for(Item item :items) {
+
+            if(item.getId() == itemId) {
+
+                cart.addItem(item);
+
+                return;
+
+            }
+
+        }
+
+
+
+        //エラー処理
+
+    }
+    public void showCartItems() {
+
+        System.out.println("商品          数量");
+
+
+
+        List<CartItem> cartItems = cart.getCartItems();
+
+
+
+        for(CartItem cattItem : cartItems) {
+
+            System.out.println(cattItem.getId() + "." + cattItem.getName() + "     " + cattItem.getQuantity());
+
+        }
+
+
+
+
+
+        System.out.println("合計:" + cart.getTotalPrice() + "円");
+
+    }
 }

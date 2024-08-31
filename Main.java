@@ -1,9 +1,15 @@
 package ticket;
 
+
+
 import java.util.*;
+
 import java.io.*;
 
+
+
 public class Main {
+
 
     public static void main(String[] args) {
 
@@ -17,12 +23,98 @@ public class Main {
 
         items.add(new Item(4, "ごはん", 150));
 
+
         TicketVendor tv = new TicketVendor(items);
+
 
         tv.showItems();
 
-        System.out.print("購入する商品番号(支払いに進む場合はc)>");
+
+        while (true) {
+
+            System.out.print("購入する商品番号(支払いに進む場合はc)>");
+
+
+            String input = null;
+
+            try {
+
+                BufferedReader inputuser = new BufferedReader(
+
+                        new InputStreamReader(System.in)
+
+                );
+
+                input = inputuser.readLine();
+
+            } catch (IOException e) {
+
+                System.out.println("システムエラー");
+
+                System.exit(0);
+
+                return;
+
+            }
+
+
+            if (input == null) {
+
+                System.out.println("商品番号またはcを指定してください。");
+
+                continue;
+
+            }
+
+
+            if (input.equals("c") || input.equals("C")) {
+
+                break;
+
+            }
+
+
+            int selectedId;
+
+            try {
+
+                selectedId = Integer.parseInt(input);
+
+            } catch (NumberFormatException e) {
+
+                System.out.println("商品番号またはcを指定してください。");
+
+                continue;
+
+            }
+
+
+            boolean isExist = false;
+
+
+            for (Item item : items) {
+
+                if (item.getId() == selectedId) {
+
+                    isExist = true;
+
+                }
+
+            }
+
+
+            if (!isExist) {
+
+                System.out.println("商品番号またはcを指定してください。");
+
+                continue;
+
+            }
+
+
+
+        }
+
 
     }
-
 }
