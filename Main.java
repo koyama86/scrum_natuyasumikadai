@@ -114,7 +114,11 @@ public class Main {
 
 
         }
+        tv.showCartItems();
 
+
+
+        System.out.print("現金を投入してください。>");
 
     }
 }
