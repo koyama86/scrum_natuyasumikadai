@@ -120,5 +120,25 @@ public class Main {
 
         System.out.print("現金を投入してください。>");
 
+        String input = null;
+        try {
+            BufferedReader inputuser = new BufferedReader(
+                    new InputStreamReader(System.in)
+            );
+            input = inputuser.readLine();
+        } catch (IOException e) {
+            System.out.println("システムエラー");
+            System.exit(0);
+            return;
+        }
+        int payment;
+        try {
+            payment = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("不正な入力です。");
+            System.exit(0);
+            return;
+        }
+
     }
 }
